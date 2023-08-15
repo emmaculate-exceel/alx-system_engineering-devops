@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%s\n" {a{a..z},b{a..z},c{a..z},d{a..z},e{a..z}}
+echo {a..z}{a..}

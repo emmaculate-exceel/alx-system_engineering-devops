@@ -1,2 +1,2 @@
 #!/bin/bash
-printf 
+paste -d - - | cut -d -f1

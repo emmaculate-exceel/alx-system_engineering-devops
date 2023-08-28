@@ -1,3 +1,2 @@
 #!/bin/bash
-echo "obase=bestchol; ibase=water; $WATER + ibase=stir; $STIR" | bc
-
+printf "%o\n" $(($(echo "ibase=water; $WATER" | bc) + $(echo "ibase=stir; $STIR" | bc)))

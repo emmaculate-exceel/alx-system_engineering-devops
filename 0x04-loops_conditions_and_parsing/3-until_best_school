@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Using the "until loop 10 time to print 'best school'"
+
+i=1
+
+until [ $i -ge 10 ];
+do
+	echo "Best School"
+	((i++))
+done

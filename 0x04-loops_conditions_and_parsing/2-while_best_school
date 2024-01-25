@@ -2,6 +2,7 @@
 # While loop to print 'Best School 10 times'
 
 i=1
+
 while ((i <= 10));
 do
     echo "Best School"

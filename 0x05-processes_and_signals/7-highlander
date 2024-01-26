@@ -2,7 +2,7 @@
 # Function to handle SIGTERM signal
 
 handler() {
-    echo "I am invincible"
+    echo "I am invincible!!!"
 }
 trap handler SIGTERM
 while true;

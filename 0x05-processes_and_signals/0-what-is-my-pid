@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Displays the PID of
+# of the current programme
+# or file/ script
+
+id=$$
+
+echo "$$"

@@ -2,4 +2,4 @@
 #Terminate a running process
 
 x="$(pgrep -f 4-to_infinity_and_beyond)"
-kill -15 "$x"
+kill -SIGTERM "$x"

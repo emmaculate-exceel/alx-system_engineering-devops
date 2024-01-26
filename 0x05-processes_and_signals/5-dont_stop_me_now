@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 #Terminate a running process
 
-killall -SIGINT 4-to_infinity_and_beyond
+x="$(pgrep -f 4-to_infinity_and_beyond)"
+killall -SIGINT "$x"

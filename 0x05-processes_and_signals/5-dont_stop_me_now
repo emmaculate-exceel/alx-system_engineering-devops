@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Terminate a running process
+
+killall -SIGINT 4-to_infinity_and_beyond

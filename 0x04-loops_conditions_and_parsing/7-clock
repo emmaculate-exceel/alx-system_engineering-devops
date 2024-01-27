@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# Hours and minutes of the day
+# Hours: displays hours from 0 - 12
+# minutes: displays minutes from 1 - 59
 
 Hour=0
 
-while [ $Hour -le 23 ]
+while [ $Hour -le 12 ]
 do
     echo "Hour: $Hour"
     

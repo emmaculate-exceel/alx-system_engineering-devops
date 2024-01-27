@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#list of files and directory
+#without it prefixes
+
+ls | sed "s/^[0-9]\+-//"

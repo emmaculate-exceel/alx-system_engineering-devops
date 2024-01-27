@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-#Terminate a running process
-
-pkill -SIGINT 4-to_infinity_and_beyond

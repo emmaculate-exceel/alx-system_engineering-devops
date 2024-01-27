@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
-#list of files and directory
-#without it prefixes
+#list all files without the prefixes
 
-ls | sed "s/^[0-9]\+-//"
+for file in *;
+do
+    if [[ $file =~ ^[0-9]+-.* ]];
+    then
+        echo "${file#*-}"
+    else
+        echo "$file"
+    fi
+done

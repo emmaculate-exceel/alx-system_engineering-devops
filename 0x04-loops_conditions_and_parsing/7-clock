@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#Hours and minutes of the day
+
+Hour=0
+while [ $Hour -le 23 ];
+do
+	echo "Hour: $Hour"
+	minutes=1
+	while [ $minutes -le 59 ];
+	do
+		echo "$minutes"
+		((minutes++))
+	done
+	((Hour++))
+done

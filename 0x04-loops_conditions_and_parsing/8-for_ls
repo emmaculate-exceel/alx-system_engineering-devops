@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#list all files without the prefixes
+#list files without the prefixes
 
 for file in *;
 do

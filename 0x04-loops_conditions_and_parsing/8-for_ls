@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 #list files without the prefixes
 
-for file in *;
+files="$(ls)"
+
+for file in $files;
 do
-    if [[ $file =~ ^[0-9]+-.* ]];
-    then
-        echo "${file#*-}"
-    else
-        echo "$file"
-    fi
+    echo "$file" | cut -d '-' -f2
 done

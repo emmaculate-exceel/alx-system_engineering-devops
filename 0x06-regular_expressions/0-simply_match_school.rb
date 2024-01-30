@@ -3,4 +3,4 @@
 #using REGEX "regular expression"
 #the scripting language used is Ruby
 
-/\bSchool\b/
+p =~ /School/

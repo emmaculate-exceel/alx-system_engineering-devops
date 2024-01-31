@@ -3,4 +3,4 @@
 #using REGEX "regular expression"
 #the scripting language used is Ruby
 
-p =~ /School/
+p ARGV[0].scan(/School/).join(', ')

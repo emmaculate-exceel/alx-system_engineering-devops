@@ -2,4 +2,4 @@
 # Search for string pattern
 # using Regex in Ruby
 
-print ARGV[0].scan(/hbt{1,}n/).join()
+print ARGV[0].scan(/hbt+n/).join()

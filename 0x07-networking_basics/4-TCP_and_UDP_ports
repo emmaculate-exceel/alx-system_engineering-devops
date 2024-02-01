@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#display listening sockets that shows the PID and
+#socket to which the programmes belongs
+
+nestat -lp

@@ -8,12 +8,13 @@ if [ -f "/.dockerenv" ];
 then
     #"Running inside Docker. Proceeding with configuration."
     #Modify the /etc/hosts to configure localhost and facebook.com
-    echo "127.0.0.2    localhost" > ~/hosts.new
-    echo "8.8.8.8      facebook.com" >> ~/hosts.new
-    cp -f ~/etc/hosts.new /etc/hosts.new
 else
     echo "This script is intended to run inside Docker. Exiting."
     exit 1
 fi
 
 # Modify /etc/hosts to configure localhost and facebook.com
+echo "127.0.0.2    localhost" > ~/hosts.new
+echo "8.8.8.8      facebook.com" >> ~/hosts.new
+cp -f ~/etc/hosts.new /etc/hosts.new
+      

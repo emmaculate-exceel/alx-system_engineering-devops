@@ -3,19 +3,16 @@
 #an Ubuntu server on a Docker
 
 # Check if the script is running inside Docker
-if [ -f "/.dockerenv" ];
-then
-    #"Running inside Docker. Proceeding with configuration."
-    #Modify the /etc/hosts to configure localhost and facebook.com
-    cp /etc/hosts ~/hosts.new
-    echo "127.0.0.2    localhost" > ~/hosts.new
-    echo "8.8.8.8      facebook.com" >> ~/hosts.new
-    sed -i s/^172.*$// ~/hosts.new
-    cp -f ~/hosts.new /etc/hosts.new
-
+if [ -f "/.dockerenv" ]; then
+    echo "Running inside Docker. Proceeding with configuration."
 else
     echo "This script is intended to run inside Docker. Exiting."
-    exit
+    exit 1
 fi
 
 # Modify /etc/hosts to configure localhost and facebook.com
+cp /etc/hosts ~/hosts.new
+echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts
+echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
+cp -f ~/host.new /etc/hosts
+echo "Configuration completed successfully."

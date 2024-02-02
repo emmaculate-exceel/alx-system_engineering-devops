@@ -11,7 +11,7 @@ if [ -f "/.dockerenv" ]; then
 
 else
     echo "This script is intended to run inside Docker. Exiting."
-    exit 1
+    exit
 fi
 
 # Modify /etc/hosts to configure localhost and facebook.com

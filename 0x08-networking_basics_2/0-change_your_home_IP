@@ -3,7 +3,8 @@
 #an Ubuntu server on a Docker
 
 # Check if the script is running inside Docker
-if [ -f "/.dockerenv" ]; then
+if [ -f "/.dockerenv" ];
+then
     echo "Running inside Docker. Proceeding with configuration."
 else
     echo "This script is intended to run inside Docker. Exiting."

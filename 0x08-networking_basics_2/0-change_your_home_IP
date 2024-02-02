@@ -8,9 +8,10 @@ if [ -f "/.dockerenv" ];
 then
     #"Running inside Docker. Proceeding with configuration."
     #Modify the /etc/hosts to configure localhost and facebook.com
+    echo "configuration in progress"
 else
     echo "This script is intended to run inside Docker. Exiting."
-    exit 1
+    exit
 fi
 
 # Modify /etc/hosts to configure localhost and facebook.com

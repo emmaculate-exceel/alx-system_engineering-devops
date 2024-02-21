@@ -13,5 +13,3 @@ else
     echo "This script is intended to run inside Docker. Exiting."
     exit
 fi
-
-# Modify /etc/hosts to configure localhost and facebook.com

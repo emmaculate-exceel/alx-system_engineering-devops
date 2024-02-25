@@ -1,0 +1,52 @@
+#user accesses Website
+* the user types www.foobar.com into their web browser and hits enter
+
+#Domain Name(DNS Resolution):
+*browser sends a DNS lookup request to resolve www.foobar.com.
+*DNS server then returns the IP address assciated to www.foobar.com.
+
+#Load Balancer (HAProxy):
+*The request is first directed or sent to the load balancer(HAProxy).
+*HAProxy has been configured with round-robin distribution algorithm, which will evenly
+distribute incoming requests across all available/multiple servers.
+
+#server 1  and server2
+*2 identical servers are setup to handle user's incoming requests.
+*each server hosts an instance of Nginx(webserver)and the application server.
+
+#web Sever(Nginx)and application server:
+*Nginx happens to be the webserver installed on each server .
+*Nginx listens to incoming HTTP request on port 80 and forwards them to the application server.
+*Nginx application sever hosts the website's applicationo logic and generates dynamic content.
+
+#sets of application file(Code base):
+*the application files containing the website's code base resides on both server.
+*and these files include HTML, CSS, BOOTSTRAP, JAVASCRIPT and some server side scripts and
+programmes.
+
+##Database (MYsql):
+*Mysql is a database management system used for storing user datas on the website's .
+*Mysql  is used for storing, retrieving and managing structured data such as user account,
+posts and the likes.
+
+#########################################################
+specifics about the infastructure
+#########################################################
+
+#Why adding load balancer :
+* the purpose for including a load balancer is to distribute incoming traffic evenly across
+multiple servers to enhance performance and reliability.
+
+#Distribution algorithm for the load balancer:
+*HAProxy is configured with a round-robin distribution algorithm, which cycles through each
+server in a sequential order, evenly distributing requests.
+
+#Active-Active or Active-Passive setup:
+*an Active-Active set-up means that all servers are actively serving requests. there is no
+standby server, each server can handle request independently.
+
+#Primary-Replica (Master-Slave) Database Cluster:
+*The database is setup as a primary-replica cluster, also known as master-slave replication.
+*The primary node (master) accepts write operations and replicats data changes to the replica
+ nodes(Slaves).
+*

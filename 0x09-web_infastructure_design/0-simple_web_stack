@@ -1,0 +1,87 @@
+#User wanting to access website
+*whenever a user tries to access the website the user type in the name of the website eg:
+"www.foobar.com" into the search bar then press enter or click on the go button.
+
+
+#DNS (domain name system)
+*the browser then send a DNS lookup request to resolve "www.foobar.com"
+*the DNS server then returned ip associated with the IP of "www.foobar.com"
+
+
+#SERVER
+*Talking about a server in this case Nginx will be our used case
+*Nginx acts as the web sever software installed on the server to serve clients it listens to
+incoming HTTPS request on port 80(default for HTTPS)
+
+
+#APPLICATION SERVER
+*The application server(e.g. Flask,Django)hosts the website's application logic and dynamic
+content for the website or application 
+*it runs the server-side code responsible for generating web pages dynamically
+
+
+#APPLICATION FILES(code base)
+*let come down to the application files that contains the website codes, code base often
+resides on the server and these code base are often textfiles
+*these files can include text files like HTML, CSS, JAVASCRIPT, BOOTSTRAP and some server side
+scripting language like PHP and the rest
+
+
+#DATABASE(Mysql)
+*Mysql just like many other DBMS(database management system)it is for storing website data.
+*It is also used for storing , retrieving and manipulation user/structured data such as user
+accounts, posts and other application data.
+
+
+#communication with user's computer:
+*The server communicates with the user's computer over the internet using the HTTP protocol.
+*When the user's browser sends an HTTP request, the server processes it and returns the
+requested web pages or resources(HTML, CSS,JAVASCRIPT, images and many more).
+
+#################################################################
+#################################################################
+Questions
+#################################################################
+#################################################################
+
+what is a server
+*a server is a webhosting machine/computer
+*in another way a server is a computer or software system that provides services or resources
+to other computers or machines over the network.
+
+Role of domain names
+*Domain names are human readable addresses used to access a website and other resources on the
+internet .
+*it provides a memorable and easy-to-remember way to locate websites and other resources.
+
+Role of webservers
+*web servers are used to serve static content(HTML, CSS, JAVSCRIPT, BOOTSTRAP and images) and
+route requests to the appropriate application server.
+
+Role of application server:
+*the application server is in charge of hosting website's dynamic content and executes
+server-side code like PHP , python and others to generate web pages on the fly.
+
+Role of databases:
+*Database management system like(Mysql)are used to store and manage structured data used by
+the website, such as user account information/details and the likes and some application data.
+
+*************************************************************************
+**************************************************************************
+issues of infastructure in designs and other
+*************************************************************************
+
+#SPOF(single point of failure):
+*in situations where you are using only one server any hardware or software failure can lead to
+downtime for the entire website.
+
+#downtime during maintenance:
+during maintenance some task like deploying of new code or updating server software, or the web
+server may need to be restarted. and that could be a cause for the downtime.
+
+
+#limited Scalability:
+*in this case infastucture may struggle to handle sudden problems/spikes in incoming traffic,
+as scaling are limited with only one server. this can lead to degraded performance or downtime
+during period of high traffic.
+

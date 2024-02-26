@@ -1,0 +1,55 @@
+#Application server:
+*application server host the backend logic and the business logic of the web application for the website.
+*** this server runs the code for processing user requests, interacting with database and generating dynamic contents.
+
+#why add it: 
+*** it's added to seperate application logic from webserver also enhance modularity, maintainability and scalability.
+*** it also allow for scaling of the application layers independently of the web layer.
+
+#web server :
+*the webserver serves as an entry point for client request and handle static content delivery.
+
+#components :
+this server normaly serves static files/content such as HTML, CSS, JAVASCRIPT and some proxying request
+
+#why add it :
+*web server increase performance efficiently in the serving certain content and offloading certain task from the application server it also enable more control over the caching and request
+handling .
+
+#Load Balancer (HAProxy):
+
+*Role: The load balancer distributes incoming client requests across multiple servers to balance the load and ensure high availability.
+Configuration: HAProxy is configured as a cluster with redundancy to ensure fault tolerance and scalability.
+#Why Add It:
+*Load balancing helps evenly distribute traffic across multiple servers, preventing any single server from becoming overloaded.
+*Configuring HAProxy as a cluster enhances reliability and ensures uninterrupted service even if one load balancer node fails.
+Split Components with Separate Servers:
+
+#Why Separate Them:
+*Separating components onto their own servers provides isolation, improves fault tolerance, and simplifies management and troubleshooting.
+*It allows for more efficient resource allocation and scaling based on the specific requirements of each component.
+Specifics:
+
+#Application Server vs. Web Server:
+
+*The distinction between the application server and the web server lies in their roles and responsibilities. While the application server handles backend logic and dynamic content generation, the web server focuses on serving static files and handling client requests.
+Load Balancer Configuration:
+
+*Configuring HAProxy as a cluster with redundancy ensures high availability and fault tolerance. It enables seamless failover and load distribution across multiple load balancer nodes.
+Additional Considerations:
+
+#*Scalability:
+Separating components onto their own servers allows for independent scaling based on the specific demands of each component. This flexibility ensures optimal resource utilization and performance.
+
+#Security:
+*Isolating components improves security by reducing the attack surface and limiting the impact of potential security breaches. It also facilitates the implementation of security measures tailored to each component's specific requirements.
+
+#Maintainability:
+*Having separate servers for different components simplifies management, maintenance, and troubleshooting. It allows for targeted updates, upgrades, and optimizations without affecting other parts of the infrastructure.
+
+*By following this infrastructure setup, we achieve a well-organized, scalable, and resilient architecture that effectively serves the needs of our web application while promoting efficiency, reliability, and security.
+
+
+links below:
+
+https://imgur.com/a/dkl7utc

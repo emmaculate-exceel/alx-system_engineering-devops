@@ -49,4 +49,27 @@ standby server, each server can handle request independently.
 *The database is setup as a primary-replica cluster, also known as master-slave replication.
 *The primary node (master) accepts write operations and replicats data changes to the replica
  nodes(Slaves).
-*
+
+#What is the difference between Replica node and Primary node :
+*primary node handles read and write operations, serving as the authorative source of the data
+*Replica node replicates data from the primary node and serve as backup copies, handling read
+ only queries to distribute the load and improve performance.
+
+##################################################################
+Issues
+####################################################################
+SPOF(single point of failure):
+*load balancer can become a single point of failure if it fails or become overloaded.
+
+#security issues:
+*lack of firewall infastructure exposes the infastructre to potential threat and attacks
+Note : implementing firewall rules and enforcing HTTP encryption can enhance security.
+
+#Monitoring tools:
+
+without monitoring tools it challenging to detect and address performance issues.
+
+
+find link below:
+
+https://imgur.com/a/nWfMRzC

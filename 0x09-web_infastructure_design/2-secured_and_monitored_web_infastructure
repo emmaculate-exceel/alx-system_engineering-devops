@@ -1,0 +1,58 @@
+#user
+*user enters the url "www.foobar.com"
+
+##firewall
+* 3 firewalls are deployed to control and filter incoming and out going traffic on the network
+* firewalls may also be inclusive to enforce security policies, block unauthorized access and
+protect the infastructure from potential threats and attack.
+
+##loadbalancer(HTTPS Termination):
+*load balancer terminates SSL/TLS connections, decrypt HTTPS traffic, and forwards request to
+the backend servers over secure HTTP.
+*SSL certificate are installed on the load balancer to server websites over HTTPS.
+*Terminating SSL at the load balancer level helps to improve the the performance, simplify
+certificate management, and offload encryption/decryption from backends server.
+
+##Monitoring client Data collector:
+*3 monitoring clients data collector(data collector)are deployed to collect metrics,log and
+events from the infastructure component.
+* they gather data on server performance, network traffic, security events and application
+health.
+* monitoring is used to detect anomalies , identify performance bottlenecks and troubleshoot
+issues, and ensure the overall health and availability of the infastructure.
+
+""""specifis"""""""""""""""
+""""""""""""""""""""""""""""
+#why add firewall:
+*firewalls are added to enforce security policies, control network traffic, and protect against unauthorized access, malware, and other security threats.
+
+#Traffic served over HTTPS:
+*HTTPS encrypt data transmitted between clients and servers , ensuring confidentiality, integrity, and authenticity. it protects sensitive information from eavesdropping, tampering,and interception by malicious people.
+
+#purpose for monitoring:
+*monitoring is used to track the the performance, availability, and security of the infastructure components in real-time . it provides insights into system behaviour, identifies issues, and enables proactive maintenance and troubleshooting.
+
+#how monitoring data is collected:
+*monitoring clients collect data through various methods , including agent based monitoring, log aggregation, SNMP polling, and API integrations they gather metrics, logs, and events from servers, networking devices, applications, and could services.
+
+#Monitoring web server QPS:
+* to monitor web server queries per second(QPS), you can collect HTTP request metrics, such as request rate, response time, and error rates, from the web servers, tools like Prometheus can be used to visualize and analyze the QPS data in real-time.
+
+#######################################
+issues
+######################################
+
+#why terminate ssl at load balance level:
+*terminating ssl at load balancer level may expose decrypted traffic within the internal network , potentially compromising data confidenctiality.
+also encrypting traffic end-to-end or using protocols like TLS Passthrough can mitigate this risk.
+
+#single mysql server accepting writes:
+*having only one mysql server capable of accepting writes creates a single point of failure(SPOF) and limits scalability. implementing mysql replication with the multiple writable nodes or using distributed database solution can address this issue.
+
+#identical Components across server:
+
+Deploying server with identical components (database, web server, and an application server) may introduce homogeneity and increase vulnerability to common failure modes. Diversifing server configurations, implementing redundancy, and adopting a microservices architecture can mitigate this risk.
+
+link below:
+
+https://imgur.com/a/dkl7utc

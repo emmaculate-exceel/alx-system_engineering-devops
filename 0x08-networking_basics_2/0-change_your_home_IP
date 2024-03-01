@@ -10,6 +10,5 @@ if [ -f "/.dockerenv" ]; then
     cp -f ~/hosts.new /etc/hosts
 
 else
-    echo "This script is intended to run inside Docker. Exiting."
     exit
 fi

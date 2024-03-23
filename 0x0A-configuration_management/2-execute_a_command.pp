@@ -1,5 +1,5 @@
 ##execute a command using puppet
-exec { 'kill_killmenow_process':
+exec { 'kill':
   command => 'pkill -f killmenow',
-  onlyif  => 'pgrep -f killmenow',
+  path    => '/usr/bin/kill',
 }

@@ -1,4 +1,4 @@
-#!/urs/bin/env bash
+#!/usr/bin/env bash
 ### install nginx webserver on the server side
 
 sudo apt update

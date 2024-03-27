@@ -1,0 +1,8 @@
+#!/urs/bin/env bash
+### install nginx webserver on the server side
+
+sudo apt update
+sudo apt install nginx -y
+sudo ufw allow 'Nginx HTTP'
+echo 'Hello World!' > /var/www/html/index.html
+sudo service nginx start

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# using sed to replace content in the nginx server
+
+sudo apt update
+sudo apt install nginx -y
+
+sudo sed -i 's/80 default_server/80/' /etc/nginx/sites-available/default
+sudo sed -i 's/^server_name _;/a \\n\tlocation /redirect_me{\n\t\treturn 301 https://github.com/emmaculate-exceel;\n\t}' /etc/nginx/sites-available/default
+
+service nginx restart

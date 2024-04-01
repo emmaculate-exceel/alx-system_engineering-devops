@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-#transfering of files from the client to the server.
+# transfering of data from the client to the server.
 
 if [ "$#" -lt 3 ];
 then
-    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
-    exit 1
+        echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+        exit 1
 elif [ "$#" -lt 4 ];
 then
-    scp -o StrictHostKeyChecking=no "$1" "$3"@"$2":~/
+        scp -o StrictHostKeyChecking=no "$1" "$3@$2":~/
 else
-    scp -i "$4" -o "StrickHostKeyChecking=no" "$1" "$3"@"$2":~/
+        scp -i "$4" -o StrickHostKeyChecking=no "$1" "$3@$2":~/
 fi

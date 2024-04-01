@@ -1,24 +1,21 @@
-#managing server using puppet
+# Automating project requirements using Puppet
 
 package { 'nginx':
-  ensure => 'present'
+  ensure => installed,
 }
 
-exec { 'install':
-  command  => 'sudo apt install update; sudo apt install nginx -y,
-  provider => shell,
+file_line { 'install':
+  ensure => 'present',
+  path   => '/etc/nginx/sites-enabled/default',
+  after  => 'listen 80 default_server;',
+  line   => 'rewrite ^/redirect_me https://www.github.com/besthor permanent;',
 }
 
-exec { 'Hello':
-  command  => 'echo "Hello World!" | sudo tee /var/www/html/index.html',
-  provider => shell,
+file { '/var/www/html/index.html':
+  content => 'Hello World!',
 }
 
-exec { 'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/github.com\/emmaculate-exceel\/;\\n\\t}/" /etc/nginx/sites-available/default':
-  provider => shell,
-}
-
-exec { 'run':
-  command  => 'sudo service nginx start',
-  provider => shell,
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
 }

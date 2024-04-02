@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# debugging why nginx port isn't available for use
+
+sudo service stop haproxy
+sudo systemctl start nginx.service
+sudo systemctl status nginx.service

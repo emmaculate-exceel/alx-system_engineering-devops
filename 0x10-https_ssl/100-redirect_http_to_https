@@ -33,16 +33,10 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend e-servy_http
-        bind *:80
-        mode http
-        http-request redirect scheme https code 301 unless { ssl_fc }
-        http-request set-header X_Forwarded-Proto http
-        default_backend e-servy_b
-
 frontend e-servy-https
+	bind *:80
         bind *:443 ssl crt /etc/haproxy/certs/www.e-servy.tech.pem
-        http-request set-header X-Forwarded-Proto https
+        http-request redirect scheme https code 301 if { hdr(Host) -i www.e-servy.tech } !{ ssl_fc }
         default_backend e-servy_b
 
 backend e-servy_b

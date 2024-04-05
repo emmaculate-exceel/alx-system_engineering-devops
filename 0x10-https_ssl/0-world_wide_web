@@ -1,22 +1,19 @@
 #!/usr/bin/env bash
-# configuring my domain(DNS)
+# Shows information about subdomains.
 
-#lb-01  ---> 100.26.217.62
-#web-02 ---> 100.25.129.60
-#web-01 ---> 35.174.207.123
-dns_info() {
+domain_information() {
     local domain="$1"
     local subdomain="$2"
-    local str
-    str=$(dig "$subdomain","$domain" | awk '/ANSWER SECTION:/ {getline; print; getline; print'})
-    echo "$subdomain $str" | awk '{printf "The subdomain %s is a %s record and points to %s\n", $1, $2, $3}'
+    local line
+    line=$(dig "$subdomain"."$domain" | awk '/ANSWER SECTION:/ {getline; print; getline; print}')
+    echo "$subdomain $line" | awk '{printf "The subdomain %s is a %s record and points to %s\n", $1, $2, $3}'
 }
 
-if [ '$#' -eq 1 ]; then
-   dns_info "$1" "www"
-   dns_info "$1" "lb-01"
-   dns_info "$1" "web-01"
-   dns_info "$1" "web-02"
+if [ "$#" -eq 1 ]; then
+    domain_information "$1" "www"
+    domain_information "$1" "lb-01"
+    domain_information "$1" "web-01"
+    domain_information "$1" "web-02"
 elif [ "$#" -eq 2 ]; then
-   dns_info "$1" "$2"
+    domain_information "$1" "$2"
 fi

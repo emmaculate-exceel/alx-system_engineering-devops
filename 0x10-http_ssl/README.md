@@ -1,1 +1,0 @@
-this the the readme file for https and ssl

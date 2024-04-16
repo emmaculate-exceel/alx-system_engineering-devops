@@ -2,5 +2,5 @@
 # Update user and port in nginx config files
 sed -i "s/www-data/nginx/g; s/80/8080/g" /etc/nginx/{nginx.conf,sites-available/default}
 chmod 644 /etc/nginx/nginx.conf
-sudo service apache2 stop #pkill apache2 
-sudo service nginx start #sudo -u nginx service nginx start
+pkill apache2 #sudo service apache2 stop #pkill apache2 
+sudo -u nginx service nginx start #sudo -u nginx service nginx start

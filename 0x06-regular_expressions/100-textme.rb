@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 #search for info in a message log
-#a log of [sender] [reciever] [flags]
+#a log of [sender] [reciever] [flag]
 
-puts ARGV[0].scan(/from:[0-9]{11}|to:[0-9]{11}|flags:.\d.\d..\d.\d..\d/).join(',')
+from = ARGV[0].scan(/from:(.*?)\]/)
+to = ARGV[0].scan(/to:(.*?)\]/)
+flags = ARGV[0].scan(/flags:(.*?)\]/)
+puts [from, to, flags].join(',')

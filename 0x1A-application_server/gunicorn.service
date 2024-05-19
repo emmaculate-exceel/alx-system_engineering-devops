@@ -6,18 +6,27 @@ After=network.target
 [Service]
 #Run services under the user "ubuntu"
 User=ubuntu
+
 #preferred working directory
 WorkingDirectory=/home/ubuntu/Airbnb_clone_v4
+
 #start Gunicorn
 ExecStart=gunicorn --workers 3 --bind 0.0.0.0:5003 web_dynamic.2-hbnb:app --error-logfile /tmp/airbnb-error.log
+
 #restart the service incase it fails
 Restart=always
+
 #redirect standard output to system log
 StandardOutput=append:/tmp/airbnb-access.log
+
 #redirect standard error to system log
 StandardError=append:/tmp/airbnb-error.log
+
 #system log messages
 SyslogIdentifier=gunicorn
+
+# Post-start command to check if Gunicorn is listening on port 5003
+ExecStartPost=/bin/bash -c 'ss -tuln | grep -q ":5003" || (echo "Gunicorn failed to start" && systemctl stop gunicorn.service)'
 
 [Install]
 #enable service for users

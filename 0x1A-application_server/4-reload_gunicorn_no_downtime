@@ -9,7 +9,7 @@ APP_ENTRY="web_flask.0-hello_route:app"
 PIDS=$(pgrep -f "$GUNICORN.*$APP_ENTRY")
 
 # Gracefully reload Gunicorn workers one by one
-for pid in $PIDS; do
+for pid in "$PIDS"; do
     echo "Reloading Gunicorn worker with PID: $pid"
     kill -HUP $pid  # Send a HUP signal to gracefully reload the worker
     sleep 2  # Wait for a few seconds for the worker to finish processing requests

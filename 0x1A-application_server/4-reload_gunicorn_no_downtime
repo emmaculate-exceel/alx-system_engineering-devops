@@ -21,5 +21,4 @@ done
 
 # Output the list of Gunicorn processes to verify the reload
 ps auxf | grep gunicorn
-ps aux | pgrep gunicorn | awk '{ print $2 }' | xargs kill -HUP
 sudo service gunicorn restart

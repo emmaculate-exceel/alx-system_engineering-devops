@@ -1,24 +1,4 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn Service
 
-# Define the path to your Gunicorn executable and the application entry point
-GUNICORN="/home/vagrant/AirBnB_clone_v4/bin/gunicorn"
-APP_ENTRY="web_flask.0-hello_route:app"
-
-# Find the process IDs (PIDs) of the running Gunicorn instances
-PIDS=$(pgrep -f "$GUNICORN.*$APP_ENTRY")
-
-# Gracefully reload Gunicorn workers one by one
-for pid in "$PIDS"; do
-    echo "Reloading Gunicorn worker with PID: $pid"
-    kill -HUP $pid  # Send a HUP signal to gracefully reload the worker
-    sleep 2  # Wait for a few seconds for the worker to finish processing requests
-done
-
-# Optionally, start a new Gunicorn worker if necessary (uncomment and modify as needed)
-# $GUNICORN --bind 0.0.0.0:8001 --workers 4 $APP_ENTRY &
-
-# Output the list of Gunicorn processes to verify the reload
-ps auxf | grep gunicorn
-ps aux | pgrep gunicorn | awk '{ print $2 }' | xargs kill -HUP
-sudo service gunicorn restart
+gunicorn | xargs kill -HUP

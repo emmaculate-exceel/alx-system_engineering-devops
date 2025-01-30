@@ -1,3 +1,1 @@
-this is file is meant for the shell navigation
-
-
+This file is meant for the understanding of Shell navigation and it basic use and basic understaning as a foundation to the understanding bash and bash script and some of it's basic concepts this is indeed worthy of a foundation in bash scripting thanks to alx for this amazing opportunity .

@@ -3,4 +3,4 @@
 
 awk 'NF >= 9 && $9 ~ /^[0-9]+$/ {
     print $1, $9
-}' | sort | uniq -c | sort -rn
+}' apache-access.log | sort | uniq -c | sort -rn

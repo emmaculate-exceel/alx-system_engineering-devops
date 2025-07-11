@@ -3,9 +3,5 @@
 
 awk '{
     # Extract IP address (first field) and HTTP status code (9th field)
-    ip = $1
-    status = $9
-    
-    # Print IP and status code for each line
-    print ip, status
+    print $1, $9
 }' | sort | uniq -c | sort -rn

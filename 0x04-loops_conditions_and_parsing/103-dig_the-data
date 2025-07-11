@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
 # using awk
 
-awk '{count[$1, $9]++} END {
-  for (key in count) {
-    split(key, parts, SUBSEP)
-    printf "%5d %s %\n", count[key], parts[1], parts[2]
-  }
-}' access.log | sort -nr
+awk '{ print $1, $9 }' apache-access.log | sort | uniq -c | sort -nr | awk '{ printf "%d %s %s\n", $1, $2, $3 }'

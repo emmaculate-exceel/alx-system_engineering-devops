@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-#file checking
-#using or imitating the file command in bash
+#file check using or imitating the file command in bash
 
 data="$(file)"
 

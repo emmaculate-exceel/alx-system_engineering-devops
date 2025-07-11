@@ -2,8 +2,8 @@
 # using awk
 
 awk '{count[$1, $9]++} END {
-  for (combo in count) {
-    split(combo, parts, SUBSEP)
-    print count[combo], parts[1], parts[2]
+  for (key in count) {
+    split(key, parts, SUBSEP)
+    printf "%5d %s %\n", count[key], parts[1], parts[2]
   }
 }' access.log | sort -nr

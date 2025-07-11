@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 # Script to analyze Apache log files and group by IP and HTTP status code
 
-awk '{
-    # Extract IP address (first field) and HTTP status code (9th field)
-    print $1, $9
-}' | sort | uniq -c | sort -rn
+awk '{print $1, $9}' | sort | uniq -c | sort -rn

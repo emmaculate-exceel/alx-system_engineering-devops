@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# using awk
+
+awk '{count[$1, $9]++} END {
+  for (combo in count) {
+    split(combo, parts, SUBSEP)
+    print count[combo], parts[1], parts[2]
+  }
+}' access.log | sort -nr

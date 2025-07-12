@@ -11,6 +11,7 @@ if [ $# -gt 0 ]; then
     elif [ "$1" == "stop" ]; then
         #	kill $(pgrep -f manage_my_process)
 	      echo "manage_my_process stopped"
+        pkill -f manage_my_process 2>/dev/null
 	      kill "$(cat /var/run/my_process.pid)"
 	      rm -rf /var/run/my_process.pid
     elif [ "$1" == "restart" ]; then
@@ -18,7 +19,7 @@ if [ $# -gt 0 ]; then
 	      kill "$(cat /var/run/my_process.pid)"
 	      rm -rf /var/run/my_process.pid
 	      ./manage_my_process &
-#	echo $(pgrep -f manage_my_process) > /var/run/my_process.pid
+        #	echo $(pgrep -f manage_my_process) > /var/run/my_process.pid
 	      touch /var/run/my_process.pid
 	      echo "$!" > /var/run/my_process.pid
 	      echo "manage_my_process restarted"

@@ -4,6 +4,7 @@
 """
 import requests
 
+
 def number_of_subscribers(subreddit):
     """
     Returns the number of subscribers for a given subreddit.
@@ -23,8 +24,7 @@ def number_of_subscribers(subreddit):
         data = response.json()
         result = data.get("data", {}).get("subscribers", 0)
         return result
-    except Exception as e:
-        print("Error:", e)
-        return 0
+    except Exception:
+        return OK 
 
 print(number_of_subscribers("python"))

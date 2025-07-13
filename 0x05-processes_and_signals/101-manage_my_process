@@ -1,30 +1,73 @@
 #!/usr/bin/env bash
 # This script manages 'manage_my_process'
 
-if [ $# -gt 0 ]; then
-    if [ "$1" == "start" ]; then
-	      /etc/init.d/manage_my_process &
-	      touch /var/run/my_process.pid
-        #	echo $(pgrep -f manage_my_process) > /var/run/my_process.pid
-	      echo "$!" > /var/run/my_process.pid
-	      echo "manage_my_process started"
-    elif [ "$1" == "stop" ]; then
-        #kill $(pgrep -f manage_my_process)
-	      echo "manage_my_process stopped"
- 	      kill "$(cat /var/run/my_process.pid)"
-	      rm -rf /var/run/my_process.pid
-    elif [ "$1" == "restart" ]; then
-        #	kill $(pgrep -f manage_my_process)
-	      kill "$(cat /var/run/my_process.pid)"
-	      rm -rf /var/run/my_process.pid
-	      ./manage_my_process &
-        #	echo $(pgrep -f manage_my_process) > /var/run/my_process.pid
-	      touch /var/run/my_process.pid
-	      echo "$!" > /var/run/my_process.pid
-	      echo "manage_my_process restarted"
+#if [ $# -gt 0 ]; then
+#    if [ "$1" == "start" ]; then
+#	      /etc/init.d/manage_my_process &
+#	      touch /var/run/my_process.pid
+#	echo $(pgrep -f manage_my_process) > /var/run/my_process.pid
+#	      echo "$!" > /var/run/my_process.pid
+#	      echo "manage_my_process started"
+# #   elif [ "$1" == "stop" ]; then
+#        #kill $(pgrep -f manage_my_process)
+#	      echo "manage_my_process stopped"
+# 	      kill "$(cat /var/run/my_process.pid)"
+#	      rm -rf /var/run/my_process.pid
+#    elif [ "$1" == "restart" ]; then
+#        #	kill $(pgrep -f manage_my_process)
+#	      kill "$(cat /var/run/my_process.pid)"
+#	      rm -rf /var/run/my_process.pid
+#	      ./manage_my_process &
+#        #	echo $(pgrep -f manage_my_process) > /var/run/my_process.pid
+#	      touch /var/run/my_process.pid
+#	      echo "$!" > /var/run/my_process.pid
+#	      echo "manage_my_process restarted"
+#   else
+#	      echo "Usage: manage_my_process {start|stop|restart}"
+#   fi
+#else
+#    echo "Usage: manage_my_process {start|stop|restart}"
+#fi
+
+PID_FILE="/var/run/my_process.pid"
+PROCESS_PATH="./manage_my_process"
+
+start() {
+    $PROCESS_PATH &
+    echo $! > "$PID_FILE"
+    echo "manage_my_process started"
+}
+
+stop() {
+    if [ -f "$PID_FILE" ]; then
+        kill "$(cat $PID_FILE)" 2>/dev/null
+        rm -f "$PID_FILE"
+        echo "manage_my_process stopped"
     else
-	      echo "Usage: manage_my_process {start|stop|restart}"
+        echo "Process not running or PID file missing"
     fi
-else
-    echo "Usage: manage_my_process {start|stop|restart}"
-fi
+}
+
+restart() {
+    stop
+    start
+    echo "manage_my_process restarted"
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    *)
+        echo "Usage: manage_my_process {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0

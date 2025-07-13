@@ -25,6 +25,6 @@ def number_of_subscribers(subreddit):
         result = data.get("data", {}).get("subscribers", 0)
         return result
     except Exception:
-        return OK 
+        return OK
 
 print(number_of_subscribers("python"))

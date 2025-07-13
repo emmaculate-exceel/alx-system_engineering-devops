@@ -26,4 +26,4 @@ tar -czf "$ARCHIVE_NAME" "$DUMP_FILE"
 # Optional: Clean up the original SQL file
 # rm "$DUMP_FILE"
 
-echo "Backup created: $ARCHIVE_NAME"
+echo "gzip compressed data, from Unix"

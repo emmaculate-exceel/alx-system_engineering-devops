@@ -2,10 +2,32 @@
 #mysql back for my webservers
 
 
-day=$(date +"%d")
-month=$(date +"%m")
-year=$(date +"%Y")
-file_name="$day-$month-$year.tar.gz"
+#!/bin/bash
 
-mysqldump --all-database -u root --password="$1" > sqlbackup.sql
-tar -czvf "$file_name" backup.sql
+# Check if password argument was provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <MySQL root password>"
+    exit 1
+fi
+
+PASSWORD=$1
+DATE=$(date +"%d-%m-%Y")
+DUMP_FILE="backup.sql"
+ARCHIVE_NAME="${DATE}.tar.gz"
+
+# Generate the MySQL dump
+mysqldump -u root -p"$PASSWORD" --all-databases > "$DUMP_FILE"
+
+# Check if dump was successful
+if [ $? -ne 0 ]; then
+    echo "MySQL dump failed. Please check your credentials."
+    exit 2
+fi
+
+# Create the compressed archive
+tar -czf "$ARCHIVE_NAME" "$DUMP_FILE"
+
+# Optional: Clean up the original SQL file
+# rm "$DUMP_FILE"
+
+echo "Backup created: $ARCHIVE_NAME"

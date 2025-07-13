@@ -3,6 +3,7 @@ import requests
 """
 0-subs
 """
+
 def number_of_subscribers(subreddit):
     """
     Returns the number of subscribers for a given subreddit.
@@ -11,6 +12,7 @@ def number_of_subscribers(subreddit):
     Returns:
         int: Number of subscribers, or 0 if invalid subreddit
     """
+
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {"user-agent": "Custom-Agent/1.0"}
 

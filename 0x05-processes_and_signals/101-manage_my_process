@@ -49,9 +49,15 @@ stop() {
 }
 
 restart() {
-    stop
-    start
-    echo "manage_my_process restarted"
+    #stop
+    #start
+    if [ -f "$PID_FILE" ]; then
+        kill "$(cat $PID_FILE)" 2>/dev/null
+        rm -f "$PID_FILE"
+    else
+        $PROCESS_PATH $
+        echo "manage_my_process restarted"
+    fi
 }
 
 case "$1" in

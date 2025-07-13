@@ -55,9 +55,9 @@ restart() {
         kill "$(cat $PID_FILE)" 2>/dev/null
         rm -f "$PID_FILE"
     else
-        $PROCESS_PATH $
-        echo "manage_my_process restarted"
+        $PROCESS_PATH &
     fi
+    echo "manage_my_process restarted"
 }
 
 case "$1" in

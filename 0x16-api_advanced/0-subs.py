@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-import requests
 """
 0-subs
 """
+import requests
 
 def number_of_subscribers(subreddit):
     """
@@ -22,5 +22,8 @@ def number_of_subscribers(subreddit):
             return 0
         data = response.json()
         return data.get("data", {}).get("subscribers", 0)
-    except Exception:
+    except Exception as e:
+        print("Error:", e)
         return 0
+
+print(number_of_subscribers("python"))

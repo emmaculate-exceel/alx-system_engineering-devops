@@ -10,7 +10,7 @@ def top_ten(subreddit):
     fetching the top ten new on reddit
     """
     url = f"https://www.reddit.com/r/{subreddit}about.com"
-    headers = {"user-agent":"Custom-Agent/1.0"}
+    headers = {"user-agent": "Custom-Agent/1.0"}
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)

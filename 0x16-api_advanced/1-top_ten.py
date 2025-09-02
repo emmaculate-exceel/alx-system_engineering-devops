@@ -11,14 +11,21 @@ def top_ten(subreddit):
     """
     url = f"https://www.reddit.com/r/{subreddit}about.com"
     headers = {"user-agent": "Custom-Agent/1.0"}
+    params = {'limit': 10}
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
         if response.status_code != 200:
-            return "None"
+            print(None)
+            return
+        
         data = response.json()
-        return data
+        posts = data.get('data', {}).get('children', [])
+
+        for post in posts:
+            title = post.get('data', {}).get('title')
+            if title:
+                print(title)
     except Exception:
         return 0
-
 print(top_ten("subreddit"))

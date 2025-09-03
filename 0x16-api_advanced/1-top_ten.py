@@ -18,7 +18,7 @@ def top_ten(subreddit):
         if response.status_code != 200:
             print(None)
             return
-        
+
         data = response.json()
         posts = data.get('data', {}).get('children', [])
 

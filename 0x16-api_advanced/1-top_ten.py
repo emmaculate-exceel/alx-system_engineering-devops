@@ -28,4 +28,3 @@ def top_ten(subreddit):
                 print(title)
     except Exception:
         return 0
-print(top_ten("subreddit"))

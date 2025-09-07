@@ -9,3 +9,7 @@ import requests
 def recurse(subreddit, hot_list=[]):
     """functions that prints hot list articles"""
     urls = f"https://www.reddit.com/r/{subreddit}/hot.json"
+
+
+
+    

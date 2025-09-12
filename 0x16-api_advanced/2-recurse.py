@@ -30,8 +30,9 @@ def recurse(subreddit, hot_list=[]):
     children = data.get('children', [])
 
     # Append titles to hot_list
-    for post in children:
-        hot_list.append(post['data']['title'])
+    if params :
+        for post in children:
+            hot_list.append(post['data']['title'])
 
     # Recursively fetch next page if available
     after = data.get('after')

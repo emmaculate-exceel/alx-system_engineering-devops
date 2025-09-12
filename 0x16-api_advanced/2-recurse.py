@@ -6,7 +6,7 @@ listing all articles and titles
 import requests
 
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[], after=None):
     """functions that prints hot list articles"""
     urls = f"https://www.reddit.com/r/{subreddit}/hot.json"
     headers = {"User-Agent": "recursive-reddit-fetcher/0.1"}
@@ -30,9 +30,8 @@ def recurse(subreddit, hot_list=[]):
     children = data.get('children', [])
 
     # Append titles to hot_list
-    if params :
-        for post in children:
-            hot_list.append(post['data']['title'])
+    for post in children:
+        hot_list.append(post['data']['title'])
 
     # Recursively fetch next page if available
     after = data.get('after')

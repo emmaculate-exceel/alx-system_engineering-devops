@@ -18,7 +18,7 @@ def recurse(subreddit, hot_list=[], after=None):
 
     # Make the request witihout following redirects
     try:
-        response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+        response = requests.get(urls, headers=headers, params=params, allow_redirects=False)
     except requests.RequestException:
         return None
 
@@ -26,7 +26,7 @@ def recurse(subreddit, hot_list=[], after=None):
     if response.status_code != 200:
         return None
 
-    data = reponse.json().get('data', {})
+    data = response.json().get('data', {})
     children = data.get('children', [])
 
     # Append titles to hot_list

@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-# Reload Gunicorn without downtime
-# Usage: ./reload_
 # Find the Gunicorn master process PID
-MASTER_PID=$(ps aux | grep 'gunicorn' | grep 'master' | awk '{print $2}')
+MASTER_PID=$(ps aux | grep '[g]unicorn' | grep 'master' | awk '{print $2}')
 
-# If master PID is found, send USR2 signal
+# Check if PID was found
 if [ -n "$MASTER_PID" ]; then
     echo "Reloading Gunicorn master process (PID: $MASTER_PID) gracefully..."
     kill -USR2 "$MASTER_PID"

@@ -10,4 +10,3 @@ else
     echo "Gunicorn master process not found."
     exit 1
 fi
-

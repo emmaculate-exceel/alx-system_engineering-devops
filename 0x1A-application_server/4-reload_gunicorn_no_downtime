@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Find the Gunicorn master process PID
-MASTER_PID=$(ps aux | grep '[g]unicorn' | grep 'master' | awk '{print $2}')
+MASTER_PID=$(pgrep -f 'gunicorn.*master')
 
 # Check if PID was found
 if [ -n "$MASTER_PID" ]; then

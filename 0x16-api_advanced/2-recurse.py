@@ -18,7 +18,8 @@ def recurse(subreddit, hot_list=[], after=None):
 
     # Make the request witihout following redirects
     try:
-        response = requests.get(urls, headers=headers, params=params, allow_redirects=False)
+        response = requests.get(
+            urls, headers=headers, params=params, allow_redirects=False)
     except requests.RequestException:
         return None
 
